@@ -27,3 +27,4 @@ Time spent on this exercise is about 3 hours.
 ## Pods imported
 * AFNetworking
 * BDBOAuth1Manager
+* Mantle
