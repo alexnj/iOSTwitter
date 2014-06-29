@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tweetListTableView;
 @property (strong, nonatomic) NSArray *tweets;
 @property (strong, nonatomic) TweetTableViewCell* prototypeCell;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation TweetListViewController
@@ -42,6 +43,9 @@
         NSLog(@"Failure: %@", error);
         
     }];
+    
+    // End pull-down-refresh rotation.
+    [self.refreshControl endRefreshing];
 }
 
 - (void)viewDidLoad {
@@ -51,8 +55,10 @@
     self.tweetListTableView.delegate = self;
     self.tweetListTableView.dataSource = self;
     
-    // Set fixed row height.
-//    self.tweetListTableView.rowHeight = 100;
+    // Attach a pull-down refresh control to table view.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(updateTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tweetListTableView addSubview:self.refreshControl];
     
     // Register Cell Nib.
     UINib *tableViewNib = [UINib nibWithNibName:@"TweetTableViewCell" bundle:nil];
