@@ -12,7 +12,7 @@
 
 - (id)init {
     self = [super init];
-    
+        
     return self;
 }
 
@@ -41,7 +41,12 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [self showMainView];
+    if ([[TwitterClient sharedInstance] isAuthorized]) {
+        [self showMainView];
+    }
+    else {
+        [self showLogin];
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

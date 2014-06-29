@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "macros.h"
+#import "TwitterClient.h"
 #import "TweetListViewController.h"
 #import "LoginViewController.h"
 
@@ -16,5 +17,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)showLogin;
+- (void)showMainView;
 
 @end

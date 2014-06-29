@@ -14,5 +14,8 @@
 @interface TwitterClient : BDBOAuth1RequestOperationManager
 
 + (TwitterClient*)sharedInstance;
+- (id)init;
+- (void)authorize;
+- (void)deauthorizeWithCompletion:(void (^)(void))completion;
 
 @end
