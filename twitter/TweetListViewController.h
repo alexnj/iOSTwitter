@@ -11,6 +11,6 @@
 #import "Tweet.h"
 #import "TwitterClient.h"
 
-@interface TweetListViewController : UIViewController
+@interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

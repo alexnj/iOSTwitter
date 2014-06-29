@@ -21,6 +21,8 @@
 		3827BAC9195FB0BE00B19DC1 /* twitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827BAC8195FB0BE00B19DC1 /* twitterTests.m */; };
 		3827BAD6195FB18F00B19DC1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827BAD4195FB18F00B19DC1 /* LoginViewController.m */; };
 		3827BAD7195FB18F00B19DC1 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3827BAD5195FB18F00B19DC1 /* LoginViewController.xib */; };
+		382F606119600F9A001E7EB8 /* TweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 382F605F19600F9A001E7EB8 /* TweetTableViewCell.m */; };
+		382F606219600F9A001E7EB8 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382F606019600F9A001E7EB8 /* TweetTableViewCell.xib */; };
 		3845A14B195FFF8000BB3553 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3845A14A195FFF8000BB3553 /* Tweet.m */; };
 		386A5370195FBF450045B31E /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A536F195FBF450045B31E /* TwitterClient.m */; };
 		386A5375195FC4840045B31E /* TweetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5373195FC4840045B31E /* TweetListViewController.m */; };
@@ -59,6 +61,9 @@
 		3827BAD3195FB18F00B19DC1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = twitter/LoginViewController.h; sourceTree = "<group>"; };
 		3827BAD4195FB18F00B19DC1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = twitter/LoginViewController.m; sourceTree = "<group>"; };
 		3827BAD5195FB18F00B19DC1 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = twitter/LoginViewController.xib; sourceTree = "<group>"; };
+		382F605E19600F9A001E7EB8 /* TweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetTableViewCell.h; path = twitter/TweetTableViewCell.h; sourceTree = "<group>"; };
+		382F605F19600F9A001E7EB8 /* TweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetTableViewCell.m; path = twitter/TweetTableViewCell.m; sourceTree = "<group>"; };
+		382F606019600F9A001E7EB8 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TweetTableViewCell.xib; path = twitter/TweetTableViewCell.xib; sourceTree = "<group>"; };
 		3845A149195FFF8000BB3553 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tweet.h; path = twitter/Tweet.h; sourceTree = "<group>"; };
 		3845A14A195FFF8000BB3553 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tweet.m; path = twitter/Tweet.m; sourceTree = "<group>"; };
 		386A536E195FBF450045B31E /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterClient.h; path = twitter/TwitterClient.h; sourceTree = "<group>"; };
@@ -183,6 +188,9 @@
 				386A5372195FC4840045B31E /* TweetListViewController.h */,
 				386A5373195FC4840045B31E /* TweetListViewController.m */,
 				386A5374195FC4840045B31E /* TweetListViewController.xib */,
+				382F605E19600F9A001E7EB8 /* TweetTableViewCell.h */,
+				382F605F19600F9A001E7EB8 /* TweetTableViewCell.m */,
+				382F606019600F9A001E7EB8 /* TweetTableViewCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382F606219600F9A001E7EB8 /* TweetTableViewCell.xib in Resources */,
 				386A5376195FC4840045B31E /* TweetListViewController.xib in Resources */,
 				3827BAAE195FB0BE00B19DC1 /* InfoPlist.strings in Resources */,
 				3827BAB6195FB0BE00B19DC1 /* Images.xcassets in Resources */,
@@ -342,6 +351,7 @@
 				386A5370195FBF450045B31E /* TwitterClient.m in Sources */,
 				3827BAB4195FB0BE00B19DC1 /* AppDelegate.m in Sources */,
 				386A5379195FCC160045B31E /* TwitterApiSecrets.m in Sources */,
+				382F606119600F9A001E7EB8 /* TweetTableViewCell.m in Sources */,
 				3845A14B195FFF8000BB3553 /* Tweet.m in Sources */,
 				3827BAB0195FB0BE00B19DC1 /* main.m in Sources */,
 				386A5375195FC4840045B31E /* TweetListViewController.m in Sources */,
