@@ -1,7 +1,7 @@
 iOSTwitter
 ==========
 
-Time spent on this exercise is about 3 hours.
+Time spent on this exercise is about 6 hours.
 
 ## User stories
 
