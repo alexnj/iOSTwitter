@@ -19,4 +19,6 @@
 - (void)deauthorizeWithCompletion:(void (^)(void))completion;
 - (void)handleOAuthCallbackWithSuccess:(NSString *)queryString success:(void(^)(void))success;
 
+- (void)getTimeline:(int)count success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 @end

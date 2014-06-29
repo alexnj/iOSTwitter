@@ -15,14 +15,23 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self loadTweets];
     }
     return self;
+}
+
+- (void)loadTweets {
+    [[TwitterClient sharedInstance] getTimeline:20 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)didReceiveMemoryWarning
