@@ -51,16 +51,19 @@
     [self.tweetListTableView addSubview:self.refreshControl];
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Home";
+    self.title = @"Twitter";
     
     // Point table view data source and delegates to this class itself.
     self.tweetListTableView.delegate = self;
     self.tweetListTableView.dataSource = self;
     
     [self attachPulldownRefresh];
+    [self addComposeButton];
+    [self addHamburgerButton];
     
     // Register Cell Nib.
     UINib *tableViewNib = [UINib nibWithNibName:@"TweetTableViewCell" bundle:nil];
@@ -87,6 +90,41 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark Compose button
+
+- (void)onComposeClick {
+    
+}
+
+- (void)addComposeButton {
+    UIImage *btnImage = [UIImage imageNamed:@"compose"];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(onComposeClick) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Compose" forState:UIControlStateNormal];
+    [button setImage:btnImage forState:UIControlStateNormal];
+    
+    button.frame = CGRectMake(0.0, 0.0, 28.0, 28.0);
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:button]];
+}
+
+- (void)onHamburgerClick {
+    
+}
+
+- (void)addHamburgerButton {
+    UIImage *btnImage = [UIImage imageNamed:@"hamburger"];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(onHamburgerClick) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Menu" forState:UIControlStateNormal];
+    [button setImage:btnImage forState:UIControlStateNormal];
+    
+    button.frame = CGRectMake(0.0, 0.0, 28.0, 28.0);
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:button]];
+}
+
 
 # pragma mark Variable height table cells
 
