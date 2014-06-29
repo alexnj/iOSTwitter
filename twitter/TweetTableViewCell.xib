@@ -41,8 +41,8 @@
                         <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYB-8m-MW7">
-                        <rect key="frame" x="303" y="10" width="42" height="17"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYB-8m-MW7">
+                        <rect key="frame" x="303" y="10" width="42" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="sNj-F2-IpS"/>
@@ -63,6 +63,7 @@
                     <constraint firstItem="Nyk-AX-zMk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6Ma-Ns-bx0"/>
                     <constraint firstItem="dHR-uu-r1x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="8UP-Ky-Gg4"/>
                     <constraint firstAttribute="trailing" secondItem="xYB-8m-MW7" secondAttribute="trailing" constant="10" id="BOX-vp-awG"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Nyk-AX-zMk" secondAttribute="bottom" constant="10" id="BS5-fL-EI5"/>
                     <constraint firstItem="xYB-8m-MW7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="dHR-uu-r1x" secondAttribute="trailing" constant="145" id="GTp-M2-Klw"/>
                     <constraint firstItem="xYB-8m-MW7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="T6m-al-Wp7"/>
                     <constraint firstItem="YZN-zR-SIx" firstAttribute="leading" secondItem="Nyk-AX-zMk" secondAttribute="trailing" constant="8" id="VpL-IK-tdX"/>

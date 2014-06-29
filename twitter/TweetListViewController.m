@@ -12,6 +12,7 @@
 @interface TweetListViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tweetListTableView;
 @property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) TweetTableViewCell* prototypeCell;
 @end
 
 @implementation TweetListViewController
@@ -51,7 +52,7 @@
     self.tweetListTableView.dataSource = self;
     
     // Set fixed row height.
-    self.tweetListTableView.rowHeight = 100;
+//    self.tweetListTableView.rowHeight = 100;
     
     // Register Cell Nib.
     UINib *tableViewNib = [UINib nibWithNibName:@"TweetTableViewCell" bundle:nil];
@@ -73,10 +74,58 @@
     return cell;
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark Variable height table cells
+
+// The approach is to have a dummy cell (prototypeCell) to do the calculation
+// when heightForRowAtIndexPath is requested. To make it more efficient and
+// non-sluggish, estimatedHeightForRowAtIndexPath is implemented that returns
+// a fixed estimation for offscreen cells.
+
+- (TweetTableViewCell *)prototypeCell {
+    if (!_prototypeCell) {
+        _prototypeCell = [self.tweetListTableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
+    }
+    return _prototypeCell;
+}
+
+- (void) configureCell:(TweetTableViewCell*)prototypeCell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Configure the dummy cell to calculate height.
+    
+    Tweet *tweet = self.tweets[indexPath.row];
+    if (tweet!=nil) {
+        prototypeCell.tweet = tweet;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self configureCell:self.prototypeCell forRowAtIndexPath:indexPath];
+
+    // Fix the issue in width calculation on orientation change.
+    // Combined with prototypeCell:layoutSubviews, this fixes
+    // the issue where text height is wrong for multi-line text
+    // (Especially when 3 lines of text, it introduces padding on
+    // upper and lower edges).
+    self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tweetListTableView.bounds), CGRectGetHeight(self.prototypeCell.bounds));
+
+    [self.prototypeCell layoutIfNeeded];
+    
+    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    // Add 1dpx height for the line.
+    // Magically, this seems to fix the text layout issue described
+    // above.
+    return size.height+1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
 }
 
 @end

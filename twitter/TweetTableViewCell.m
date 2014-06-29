@@ -61,4 +61,12 @@
     });
 }
 
+- (void)layoutSubviews {
+    // Fix the issue where text height is wrong for multi-line text
+    // (Especially when 3 lines of text, it introduces padding at upper and lower edges).
+    [super layoutSubviews];
+    [self.contentView layoutIfNeeded];
+    self.text.preferredMaxLayoutWidth = CGRectGetWidth(self.text.frame);
+}
+
 @end
