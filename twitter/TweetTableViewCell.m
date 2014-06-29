@@ -35,6 +35,28 @@
     self.userName.text = tweet.userName;
     self.userScreenName.text = tweet.userScreenName;
     self.text.text = tweet.text;
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.userProfileImageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        UIImage *image = [UIImage imageWithData:data];
+        
+        [self setImageOnMainThread:self.userProfileImage image:image];
+    }];
+}
+
+- (void)setImageOnMainThread: (UIImageView *)imageView image:(UIImage *)image {
+    if (!image)
+        return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CATransition *transition = [CATransition animation];
+        transition.type = kCATransitionFade;
+        transition.duration = 0.5;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [imageView.layer addAnimation:transition forKey:nil];
+        
+        imageView.image = image;
+    });
 }
 
 @end
