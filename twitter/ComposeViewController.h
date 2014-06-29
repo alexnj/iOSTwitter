@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+#import "TwitterClient.h"
 
 @interface ComposeViewController : UIViewController
 
