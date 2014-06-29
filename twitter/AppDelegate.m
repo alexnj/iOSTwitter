@@ -10,12 +10,42 @@
 
 @implementation AppDelegate
 
+- (id)init {
+    self = [super init];
+    
+    return self;
+}
+
+- (void)showLogin {
+    LoginViewController* loginView = [[LoginViewController alloc] init];
+    [self.window setRootViewController:loginView];
+}
+
+- (void)showMainView {
+    // Initialize TweetListView
+    TweetListViewController *vc = [[TweetListViewController alloc] init];
+    
+    // Setup navigation controller.
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xCF1806)];
+    nvc.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                           [UIFont fontWithName:@"Arial" size:21.0], NSFontAttributeName, nil]];
+    self.window.rootViewController = vc;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    [self showMainView];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -45,5 +75,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

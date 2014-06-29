@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "macros.h"
+#import "TweetListViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void)showLogin;
 
 @end
