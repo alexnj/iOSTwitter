@@ -13,8 +13,15 @@
 // A static dateformatter (creating these are costly)
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setLocale:usLocale];
+    
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    
+    // see http://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns
+    [dateFormatter setDateFormat: @"EEE MMM dd HH:mm:ss Z yyyy"];
+    
     return dateFormatter;
 }
 
@@ -23,7 +30,7 @@
 	return @{
              @"text": @"text",
              @"url": @"url",
-             @"dateTweeted": @"created_at",
+             @"createdAt": @"created_at",
              @"userName": @"user.name",
              @"userScreenName": @"user.screen_name",
              @"userProfileImageUrl": @"user.profile_image_url"
@@ -35,13 +42,52 @@
 	return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-// Transformer dateTweeted<->NSDate
-+ (NSValueTransformer *)dateTweetedJSONTransformer {
+// Transformer createdAt<->NSDate
++ (NSValueTransformer *)createdAtJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
         return [self.dateFormatter dateFromString:str];
     } reverseBlock:^(NSDate *date) {
         return [self.dateFormatter stringFromDate:date];
     }];
 }
+
+// Return createdAt as a human readable time elapsed string.
+- (NSString *)createdAtAsElapsed {
+    NSTimeInterval interval = [self.createdAt timeIntervalSinceNow];
+    
+    NSString *retVal = @"now";
+    if (interval == 0) return retVal;
+    
+    int second = 1;
+    int minute = second*60;
+    int hour = minute*60;
+    int day = hour*24;
+    // interval can be before (negative) or after (positive)
+    int num = abs(interval);
+    
+    NSString *beforeOrAfter = @"before";
+    NSString *unit = @"day";
+    if (interval > 0) {
+        beforeOrAfter = @"after";
+    }
+    
+    if (num >= day) {
+        num /= day;
+        if (num > 1) unit = @"d";
+    } else if (num >= hour) {
+        num /= hour;
+        unit = (num > 1) ? @"h" : @"h";
+    } else if (num >= minute) {
+        num /= minute;
+        unit = (num > 1) ? @"m" : @"m";
+    } else if (num >= second) {
+        num /= second;
+        unit = (num > 1) ? @"s" : @"s";
+        
+    }
+    
+    return [NSString stringWithFormat:@"%d%@", num, unit];
+}
+
 
 @end

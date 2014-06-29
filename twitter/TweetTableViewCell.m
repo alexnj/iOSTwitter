@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *userScreenName;
 @property (weak, nonatomic) IBOutlet UILabel *text;
+@property (weak, nonatomic) IBOutlet UILabel *time;
 @end
 
 @implementation TweetTableViewCell
@@ -35,6 +36,7 @@
     self.userName.text = tweet.userName;
     self.userScreenName.text = tweet.userScreenName;
     self.text.text = tweet.text;
+    self.time.text = [tweet createdAtAsElapsed];
     
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.userProfileImageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
