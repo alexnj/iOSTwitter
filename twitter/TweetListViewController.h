@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Mantle.h"
+#import "Tweet.h"
+#import "TwitterClient.h"
 
 @interface TweetListViewController : UIViewController
 

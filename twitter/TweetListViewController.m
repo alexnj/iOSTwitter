@@ -7,7 +7,6 @@
 //
 
 #import "TweetListViewController.h"
-#import "LoginViewController.h"
 
 @implementation TweetListViewController
 
@@ -21,8 +20,13 @@
 }
 
 - (void)loadTweets {
-    [[TwitterClient sharedInstance] getTimeline:20 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success %@", responseObject);
+    [[TwitterClient sharedInstance] getTimeline:20 success:^(AFHTTPRequestOperation *operation, NSArray* jsonTweetsArray) {
+        NSLog(@"Success %@", jsonTweetsArray);
+        NSValueTransformer *transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Tweet.class];
+        NSArray *tweets = [transformer transformedValue:jsonTweetsArray];
+        
+        NSLog(@"Success %@", tweets);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];

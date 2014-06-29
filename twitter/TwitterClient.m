@@ -92,7 +92,9 @@
 # pragma mark APIs
 
 - (void)getTimeline:(int)count success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    NSString *timeline = @"statuses/home_timeline.json?count=100";
+    
+    // TODO: Remove hard-coded count.
+    NSString *timeline = @"statuses/home_timeline.json?count=20";
     
     [self GET:timeline parameters:nil success:success failure:failure];
     
