@@ -9,7 +9,7 @@
 #ifndef twitter_TwitterApiSecrets_h
 #define twitter_TwitterApiSecrets_h
 
-NSString* const consumerKey    = @"";
-NSString* const consumerSecret = @"";
+extern NSString* const consumerKey;
+extern NSString* const consumerSecret;
 
 #endif
