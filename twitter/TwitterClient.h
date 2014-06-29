@@ -17,5 +17,6 @@
 - (id)init;
 - (void)authorize;
 - (void)deauthorizeWithCompletion:(void (^)(void))completion;
+- (void)handleOAuthCallbackWithSuccess:(NSString *)queryString success:(void(^)(void))success;
 
 @end

@@ -63,4 +63,31 @@
 }
 
 
+- (void)handleOAuthCallbackWithSuccess:(NSString *)queryString success:(void (^)(void))success {
+    NSDictionary *parameters = [NSDictionary dictionaryFromQueryString:queryString];
+    
+    if (parameters[BDBOAuth1OAuthTokenParameter] && parameters[BDBOAuth1OAuthVerifierParameter]) {
+        [self fetchAccessTokenWithPath:@"/oauth/access_token"
+                                method:@"POST"
+                          requestToken:[BDBOAuthToken tokenWithQueryString:queryString]
+                               success:^(BDBOAuthToken *accessToken) {
+                                   NSLog(@"Access token: %@", accessToken);
+                                   if (success) {
+                                       success();
+                                   }
+                               }
+                               failure:^(NSError *error) {
+                                   NSLog(@"Error: %@", error.localizedDescription);
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                   message:@"Could not acquire OAuth access token. Please try again later."
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Dismiss"
+                                                         otherButtonTitles:nil] show];
+                                   });
+                               }];
+    }
+}
+
+
 @end

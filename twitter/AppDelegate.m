@@ -12,7 +12,6 @@
 
 - (id)init {
     self = [super init];
-        
     return self;
 }
 
@@ -81,5 +80,18 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([url.scheme isEqualToString:@"iostwitterapp"]) {
+        if ([url.host isEqualToString:@"request"]) {
+            [[TwitterClient sharedInstance] handleOAuthCallbackWithSuccess:url.query success:^{
+                [self showMainView];
+            }];
+        }
+        
+        return YES;
+    }
+    
+    return NO;
+}
 
 @end
