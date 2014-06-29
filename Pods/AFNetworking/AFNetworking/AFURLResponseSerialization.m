@@ -28,8 +28,8 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-NSString * const AFURLResponseSerializationErrorDomain = @"com.alamofire.error.serialization.response";
-NSString * const AFNetworkingOperationFailingURLResponseErrorKey = @"com.alamofire.serialization.response.error.response";
+extern NSString * const AFNetworkingErrorDomain;
+extern NSString * const AFNetworkingOperationFailingURLResponseErrorKey;
 
 static NSError * AFErrorWithUnderlyingError(NSError *error, NSError *underlyingError) {
     if (!error) {
@@ -119,7 +119,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                                            AFNetworkingOperationFailingURLResponseErrorKey: response
                                            };
 
-                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo], validationError);
+                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo], validationError);
             }
 
             responseIsValid = NO;
@@ -132,7 +132,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                                        AFNetworkingOperationFailingURLResponseErrorKey: response
                                        };
 
-            validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo], validationError);
+            validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo], validationError);
 
             responseIsValid = NO;
         }
@@ -224,7 +224,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFNetworkingErrorDomain)) {
             return nil;
         }
     }
@@ -260,7 +260,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                                            NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Could not decode string: %@", nil, @"AFNetworking"), responseString]
                                            };
 
-                serializationError = [NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
+                serializationError = [NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
             }
         }
     }
@@ -334,7 +334,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFNetworkingErrorDomain)) {
             return nil;
         }
     }
@@ -379,7 +379,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFNetworkingErrorDomain)) {
             return nil;
         }
     }
@@ -462,7 +462,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFNetworkingErrorDomain)) {
             return nil;
         }
     }
@@ -639,7 +639,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFNetworkingErrorDomain)) {
             return nil;
         }
     }

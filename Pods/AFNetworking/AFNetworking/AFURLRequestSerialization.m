@@ -28,8 +28,7 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-NSString * const AFURLRequestSerializationErrorDomain = @"com.alamofire.error.serialization.request";
-NSString * const AFNetworkingOperationFailingURLRequestErrorKey = @"com.alamofire.serialization.request.error.response";
+extern NSString * const AFNetworkingErrorDomain;
 
 typedef NSString * (^AFQueryStringSerializationBlock)(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error);
 
@@ -601,16 +600,16 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     NSParameterAssert(mimeType);
 
     if (![fileURL isFileURL]) {
-        NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(@"Expected URL to be a file URL", @"AFNetworking", nil)};
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedStringFromTable(@"Expected URL to be a file URL", @"AFNetworking", nil) forKey:NSLocalizedFailureReasonErrorKey];
         if (error) {
-            *error = [[NSError alloc] initWithDomain:AFURLRequestSerializationErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
+            *error = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
         }
 
         return NO;
     } else if ([fileURL checkResourceIsReachableAndReturnError:error] == NO) {
-        NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(@"File URL not reachable.", @"AFNetworking", nil)};
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedStringFromTable(@"File URL not reachable.", @"AFNetworking", nil) forKey:NSLocalizedFailureReasonErrorKey];
         if (error) {
-            *error = [[NSError alloc] initWithDomain:AFURLRequestSerializationErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
+            *error = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
         }
 
         return NO;
@@ -730,12 +729,9 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
 #pragma mark -
 
-@interface NSStream ()
-@property (readwrite) NSStreamStatus streamStatus;
-@property (readwrite, copy) NSError *streamError;
-@end
-
 @interface AFMultipartBodyStream () <NSCopying>
+@property (readwrite, nonatomic, assign) NSStreamStatus streamStatus;
+@property (readwrite, nonatomic, strong) NSError *streamError;
 @property (readwrite, nonatomic, assign) NSStringEncoding stringEncoding;
 @property (readwrite, nonatomic, strong) NSMutableArray *HTTPBodyParts;
 @property (readwrite, nonatomic, strong) NSEnumerator *HTTPBodyPartEnumerator;
@@ -745,11 +741,6 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 @end
 
 @implementation AFMultipartBodyStream
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
-@synthesize streamStatus;
-@synthesize streamError;
-#pragma clang diagnostic pop
 
 - (id)initWithStringEncoding:(NSStringEncoding)encoding {
     self = [super init];
@@ -1189,7 +1180,7 @@ typedef enum {
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFJSONRequestSerializer *serializer = [super copyWithZone:zone];
+    AFJSONRequestSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.writingOptions = self.writingOptions;
 
     return serializer;
@@ -1271,7 +1262,7 @@ typedef enum {
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFPropertyListRequestSerializer *serializer = [super copyWithZone:zone];
+    AFPropertyListRequestSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.format = self.format;
     serializer.writeOptions = self.writeOptions;
 

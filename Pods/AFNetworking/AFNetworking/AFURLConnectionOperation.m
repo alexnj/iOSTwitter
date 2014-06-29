@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, AFOperationState) {
     AFOperationFinishedState    = 3,
 };
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 typedef UIBackgroundTaskIdentifier AFBackgroundTaskIdentifier;
 #else
 typedef id AFBackgroundTaskIdentifier;
@@ -65,6 +65,10 @@ static dispatch_queue_t url_request_operation_completion_queue() {
 }
 
 static NSString * const kAFNetworkingLockName = @"com.alamofire.networking.operation.lock";
+
+NSString * const AFNetworkingErrorDomain = @"AFNetworkingErrorDomain";
+NSString * const AFNetworkingOperationFailingURLRequestErrorKey = @"AFNetworkingOperationFailingURLRequestErrorKey";
+NSString * const AFNetworkingOperationFailingURLResponseErrorKey = @"AFNetworkingOperationFailingURLResponseErrorKey";
 
 NSString * const AFNetworkingOperationDidStartNotification = @"com.alamofire.networking.operation.start";
 NSString * const AFNetworkingOperationDidFinishNotification = @"com.alamofire.networking.operation.finish";
@@ -211,7 +215,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
         _outputStream = nil;
     }
     
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     if (_backgroundTaskIdentifier) {
         [[UIApplication sharedApplication] endBackgroundTask:_backgroundTaskIdentifier];
         _backgroundTaskIdentifier = UIBackgroundTaskInvalid;
@@ -289,7 +293,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 - (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler {
     [self.lock lock];
     if (!self.backgroundTaskIdentifier) {
@@ -631,11 +635,11 @@ willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challe
  totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.uploadProgress) {
+    if (self.uploadProgress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
             self.uploadProgress((NSUInteger)bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
-        }
-    });
+        });
+    }
 }
 
 - (void)connection:(NSURLConnection __unused *)connection
