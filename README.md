@@ -28,3 +28,4 @@ Time spent on this exercise is about 9 hours.
 * AFNetworking
 * BDBOAuth1Manager
 * Mantle
+* ECSlidingViewController

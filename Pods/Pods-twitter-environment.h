@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_BDBOAuth1Manager 2
 #define COCOAPODS_VERSION_PATCH_BDBOAuth1Manager 1
 
+// ECSlidingViewController
+#define COCOAPODS_POD_AVAILABLE_ECSlidingViewController
+#define COCOAPODS_VERSION_MAJOR_ECSlidingViewController 2
+#define COCOAPODS_VERSION_MINOR_ECSlidingViewController 0
+#define COCOAPODS_VERSION_PATCH_ECSlidingViewController 2
+
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1

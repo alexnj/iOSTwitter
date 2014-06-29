@@ -11,12 +11,11 @@
 #import "TwitterClient.h"
 #import "TweetListViewController.h"
 #import "LoginViewController.h"
+#import "ECSlidingViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
 @property (strong, nonatomic) UIWindow *window;
-
 - (void)showLogin;
 - (void)showMainView;
-
+- (void)slideToRevealLeftMenu;
 @end

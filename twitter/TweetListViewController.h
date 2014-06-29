@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "macros.h"
+#import "AppDelegate.h"
 #import "Mantle.h"
 #import "Tweet.h"
 #import "TwitterClient.h"

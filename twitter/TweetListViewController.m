@@ -111,7 +111,7 @@
 }
 
 - (void)onHamburgerClick {
-    
+    [UIAppDelegate slideToRevealLeftMenu];
 }
 
 - (void)addHamburgerButton {

@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+@interface AppDelegate ()
+@property (nonatomic, strong) ECSlidingViewController *slidingViewController;
+@end
+
 @implementation AppDelegate
 
 - (id)init {
@@ -33,8 +37,44 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"Arial" size:16.0], NSFontAttributeName, nil]];
-    self.window.rootViewController = nvc;
+
+    // Install Left slide view controller.
+    [self installLeftSlideViewWithTopViewController:nvc];
 }
+
+#pragma mark Setup a slide-menu view.
+
+- (void)slideToRevealLeftMenu {
+    if (self.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [self.slidingViewController resetTopViewAnimated:YES];
+    }
+    else {
+        [self.slidingViewController anchorTopViewToRightAnimated:YES];
+    }
+}
+
+- (void)installLeftSlideViewWithTopViewController:(UIViewController*)nvc {
+    UIViewController *underLeftViewController  = [[UIViewController alloc] init];
+    // configure under left view controller
+    underLeftViewController.view.layer.borderWidth     = 20;
+    underLeftViewController.view.layer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
+    underLeftViewController.view.layer.borderColor     = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
+    underLeftViewController.edgesForExtendedLayout     = UIRectEdgeLeft; // don't go under the top view
+    
+    // configure sliding view controller
+    self.slidingViewController = [ECSlidingViewController slidingWithTopViewController:nvc];
+    self.slidingViewController.underLeftViewController  = underLeftViewController;
+    
+    // enable swiping on the top view
+    [nvc.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // configure anchored layout
+    self.slidingViewController.anchorRightPeekAmount  = 50.0;
+    
+    self.window.rootViewController = self.slidingViewController;
+}
+
+#pragma Lifecycle of the app.
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

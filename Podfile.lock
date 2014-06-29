@@ -21,6 +21,7 @@ PODS:
   - BDBOAuth1Manager (1.2.1):
     - AFNetworking/NSURLConnection (~> 2.2.0)
     - AFNetworking/NSURLSession (~> 2.2.0)
+  - ECSlidingViewController (2.0.2)
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
@@ -28,11 +29,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.2.0)
   - BDBOAuth1Manager
+  - ECSlidingViewController (~> 2.0.2)
   - Mantle
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   BDBOAuth1Manager: 55c7390b5018cac757e322ad8f9ab782b0f9fd01
+  ECSlidingViewController: 6c11fadb10d720c2d48bc577962332bdd4264c9f
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
 
 COCOAPODS: 0.33.1
