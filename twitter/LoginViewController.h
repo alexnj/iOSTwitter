@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwitterClient.h"
 
 @interface LoginViewController : UIViewController
 
