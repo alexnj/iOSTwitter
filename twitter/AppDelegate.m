@@ -27,13 +27,13 @@
     // Setup navigation controller.
     UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
     
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xCF1806)];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x55acee)];
     nvc.navigationBar.tintColor = [UIColor whiteColor];
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"Arial" size:21.0], NSFontAttributeName, nil]];
-    self.window.rootViewController = vc;
+    self.window.rootViewController = nvc;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
