@@ -32,7 +32,7 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
-                                                           [UIFont fontWithName:@"Arial" size:21.0], NSFontAttributeName, nil]];
+                                                           [UIFont fontWithName:@"Arial" size:16.0], NSFontAttributeName, nil]];
     self.window.rootViewController = nvc;
 }
 

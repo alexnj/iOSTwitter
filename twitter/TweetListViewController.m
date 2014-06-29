@@ -54,6 +54,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Home";
+    
     // Point table view data source and delegates to this class itself.
     self.tweetListTableView.delegate = self;
     self.tweetListTableView.dataSource = self;

@@ -22,39 +22,39 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ep-GH-z9J">
-                        <rect key="frame" x="66" y="10" width="42" height="17"/>
+                        <rect key="frame" x="66" y="10" width="42" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="ZBM-9i-IOK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-uu-r1x">
-                        <rect key="frame" x="116" y="10" width="42" height="17"/>
+                        <rect key="frame" x="116" y="10" width="42" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="heY-9g-N5J"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYB-8m-MW7">
-                        <rect key="frame" x="303" y="10" width="42" height="16"/>
+                        <rect key="frame" x="303" y="10" width="42" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="sNj-F2-IpS"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-zR-SIx">
-                        <rect key="frame" x="66" y="30" width="279" height="17"/>
+                        <rect key="frame" x="66" y="26" width="279" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -68,7 +68,7 @@
                     <constraint firstItem="xYB-8m-MW7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="T6m-al-Wp7"/>
                     <constraint firstItem="YZN-zR-SIx" firstAttribute="leading" secondItem="Nyk-AX-zMk" secondAttribute="trailing" constant="8" id="VpL-IK-tdX"/>
                     <constraint firstItem="Nyk-AX-zMk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="c1K-p1-Xjz"/>
-                    <constraint firstItem="YZN-zR-SIx" firstAttribute="top" secondItem="9ep-GH-z9J" secondAttribute="bottom" constant="3" id="dho-3t-PgP"/>
+                    <constraint firstItem="YZN-zR-SIx" firstAttribute="top" secondItem="9ep-GH-z9J" secondAttribute="bottom" constant="1" id="dho-3t-PgP"/>
                     <constraint firstItem="dHR-uu-r1x" firstAttribute="leading" secondItem="9ep-GH-z9J" secondAttribute="trailing" constant="8" id="kR1-2n-vjP"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YZN-zR-SIx" secondAttribute="bottom" constant="10" id="lPh-Mq-MI7"/>
                     <constraint firstItem="9ep-GH-z9J" firstAttribute="leading" secondItem="Nyk-AX-zMk" secondAttribute="trailing" constant="8" id="o32-q3-XUB"/>

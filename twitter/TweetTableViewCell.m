@@ -32,7 +32,7 @@
     _tweet = tweet;
     
     self.userName.text = tweet.userName;
-    self.userScreenName.text = tweet.userScreenName;
+    self.userScreenName.text = [@"@" stringByAppendingString:tweet.userScreenName];
     self.text.text = tweet.text;
     self.time.text = [tweet createdAtAsElapsed];
     
