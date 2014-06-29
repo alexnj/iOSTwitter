@@ -10,6 +10,8 @@
 #import "Mantle.h"
 #import "Tweet.h"
 #import "TwitterClient.h"
+#import "TweetTableViewCell.h"
+#import "ComposeViewController.h"
 
 @interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

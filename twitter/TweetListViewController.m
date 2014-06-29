@@ -7,7 +7,6 @@
 //
 
 #import "TweetListViewController.h"
-#import "TweetTableViewCell.h"
 
 @interface TweetListViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tweetListTableView;
@@ -94,7 +93,8 @@
 #pragma mark Compose button
 
 - (void)onComposeClick {
-    
+    ComposeViewController *svc = [[ComposeViewController alloc] init];
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 - (void)addComposeButton {
@@ -104,6 +104,7 @@
     [button addTarget:self action:@selector(onComposeClick) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Compose" forState:UIControlStateNormal];
     [button setImage:btnImage forState:UIControlStateNormal];
+    [button setShowsTouchWhenHighlighted:TRUE];
     
     button.frame = CGRectMake(0.0, 0.0, 28.0, 28.0);
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:button]];
@@ -120,6 +121,7 @@
     [button addTarget:self action:@selector(onHamburgerClick) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Menu" forState:UIControlStateNormal];
     [button setImage:btnImage forState:UIControlStateNormal];
+    [button setShowsTouchWhenHighlighted:TRUE];
     
     button.frame = CGRectMake(0.0, 0.0, 28.0, 28.0);
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:button]];
