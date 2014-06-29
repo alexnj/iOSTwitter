@@ -29,7 +29,6 @@
 
 - (void)updateTimeline {
     [[TwitterClient sharedInstance] getTimeline:20 success:^(AFHTTPRequestOperation *operation, NSArray* jsonTweetsArray) {
-        
         // Convert JSON response to Tweet Mantel Models.
         NSValueTransformer *transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Tweet.class];
         self.tweets = [transformer transformedValue:jsonTweetsArray];
@@ -39,13 +38,17 @@
         [self.tweetListTableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
         NSLog(@"Failure: %@", error);
-        
     }];
     
     // End pull-down-refresh rotation.
     [self.refreshControl endRefreshing];
+}
+
+- (void)attachPulldownRefresh {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(updateTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tweetListTableView addSubview:self.refreshControl];
 }
 
 - (void)viewDidLoad {
@@ -55,10 +58,7 @@
     self.tweetListTableView.delegate = self;
     self.tweetListTableView.dataSource = self;
     
-    // Attach a pull-down refresh control to table view.
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(updateTimeline) forControlEvents:UIControlEventValueChanged];
-    [self.tweetListTableView addSubview:self.refreshControl];
+    [self attachPulldownRefresh];
     
     // Register Cell Nib.
     UINib *tableViewNib = [UINib nibWithNibName:@"TweetTableViewCell" bundle:nil];
@@ -79,7 +79,6 @@
     
     return cell;
 }
-
 
 - (void)didReceiveMemoryWarning
 {

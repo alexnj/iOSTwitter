@@ -18,13 +18,11 @@
 
 @implementation TweetTableViewCell
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
@@ -41,7 +39,6 @@
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.userProfileImageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         UIImage *image = [UIImage imageWithData:data];
-        
         [self setImageOnMainThread:self.userProfileImage image:image];
     }];
 }
