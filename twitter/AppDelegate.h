@@ -12,6 +12,7 @@
 #import "TweetListViewController.h"
 #import "LoginViewController.h"
 #import "ECSlidingViewController.h"
+#import "LeftSlideViewMenuController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;

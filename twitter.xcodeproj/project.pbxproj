@@ -33,6 +33,8 @@
 		38A134F31960CB9600C54A5B /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A134F11960CB9600C54A5B /* ComposeViewController.m */; };
 		38A134F41960CB9600C54A5B /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38A134F21960CB9600C54A5B /* ComposeViewController.xib */; };
 		38A134F61960CED900C54A5B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A134F51960CED900C54A5B /* back.png */; };
+		38F0DF161960D915003F5C66 /* LeftSlideViewMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */; };
+		38F0DF171960D915003F5C66 /* LeftSlideViewMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */; };
 		A7C08470395848C0820B0403 /* libPods-twitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2781140A25249008EA21712 /* libPods-twitter.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,9 @@
 		38A134F11960CB9600C54A5B /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewController.m; path = twitter/ComposeViewController.m; sourceTree = "<group>"; };
 		38A134F21960CB9600C54A5B /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ComposeViewController.xib; path = twitter/ComposeViewController.xib; sourceTree = "<group>"; };
 		38A134F51960CED900C54A5B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		38F0DF131960D915003F5C66 /* LeftSlideViewMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewMenuController.h; path = twitter/LeftSlideViewMenuController.h; sourceTree = "<group>"; };
+		38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewMenuController.m; path = twitter/LeftSlideViewMenuController.m; sourceTree = "<group>"; };
+		38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftSlideViewMenuController.xib; path = twitter/LeftSlideViewMenuController.xib; sourceTree = "<group>"; };
 		AA1CE69C08354FB5A6063BD7 /* Pods-twitter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.xcconfig"; path = "Pods/Pods-twitter.xcconfig"; sourceTree = "<group>"; };
 		C2781140A25249008EA21712 /* libPods-twitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -206,6 +211,9 @@
 				38A134F01960CB9600C54A5B /* ComposeViewController.h */,
 				38A134F11960CB9600C54A5B /* ComposeViewController.m */,
 				38A134F21960CB9600C54A5B /* ComposeViewController.xib */,
+				38F0DF131960D915003F5C66 /* LeftSlideViewMenuController.h */,
+				38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */,
+				38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F0DF171960D915003F5C66 /* LeftSlideViewMenuController.xib in Resources */,
 				38A134EC1960C3AD00C54A5B /* compose.png in Resources */,
 				38A134EF1960CACD00C54A5B /* hamburger.png in Resources */,
 				38A134F61960CED900C54A5B /* back.png in Resources */,
@@ -381,6 +390,7 @@
 				3827BAB4195FB0BE00B19DC1 /* AppDelegate.m in Sources */,
 				386A5379195FCC160045B31E /* TwitterApiSecrets.m in Sources */,
 				38A134F31960CB9600C54A5B /* ComposeViewController.m in Sources */,
+				38F0DF161960D915003F5C66 /* LeftSlideViewMenuController.m in Sources */,
 				382F606119600F9A001E7EB8 /* TweetTableViewCell.m in Sources */,
 				3845A14B195FFF8000BB3553 /* Tweet.m in Sources */,
 				3827BAB0195FB0BE00B19DC1 /* main.m in Sources */,

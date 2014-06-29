@@ -54,12 +54,7 @@
 }
 
 - (void)installLeftSlideViewWithTopViewController:(UIViewController*)nvc {
-    UIViewController *underLeftViewController  = [[UIViewController alloc] init];
-    // configure under left view controller
-    underLeftViewController.view.layer.borderWidth     = 20;
-    underLeftViewController.view.layer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
-    underLeftViewController.view.layer.borderColor     = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
-    underLeftViewController.edgesForExtendedLayout     = UIRectEdgeLeft; // don't go under the top view
+    UIViewController *underLeftViewController  = [[LeftSlideViewMenuController alloc] init];
     
     // configure sliding view controller
     self.slidingViewController = [ECSlidingViewController slidingWithTopViewController:nvc];
