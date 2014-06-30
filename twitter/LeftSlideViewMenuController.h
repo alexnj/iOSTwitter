@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "macros.h"
+#import "TwitterClient.h"
+#import "AppDelegate.h"
 
 @interface LeftSlideViewMenuController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

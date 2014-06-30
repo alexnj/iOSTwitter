@@ -81,4 +81,29 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.section) {
+        case 0:
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    [self onClickSignout];
+                    break;
+            }
+            break;
+    }
+}
+
+
+#pragma mark Menu click handlers.
+
+- (void) onClickSignout {
+    [[TwitterClient sharedInstance] deauthorizeWithCompletion:^{
+        [UIAppDelegate showLogin];
+    }];
+}
+
 @end
