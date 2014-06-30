@@ -60,7 +60,6 @@
 
 - (void)onTweetClick {
     [[TwitterClient sharedInstance] tweet:self.text.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
         if (self.tweetCallbackViewController != nil && self.tweetCallbackViewMethod != nil) {
             
             // Convert JSON response to Tweet Mantle Model.
@@ -77,7 +76,13 @@
             [self onBackClick];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc] initWithTitle:@"Error"
+                                        message:@"Could not post the update. Please try again later."
+                                       delegate:self
+                              cancelButtonTitle:@"Dismiss"
+                              otherButtonTitles:nil] show];
+        });
     }];
 }
 
