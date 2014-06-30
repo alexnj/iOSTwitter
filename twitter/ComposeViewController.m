@@ -57,7 +57,11 @@
 }
 
 - (void)onTweetClick {
-    
+    [[TwitterClient sharedInstance] tweet:self.text.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+    }];
 }
 
 - (void)addTweetButton {

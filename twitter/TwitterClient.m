@@ -100,4 +100,12 @@
     
 }
 
+- (void)tweet:(NSString *)update success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    NSString *timeline = @"statuses/update.json";
+    NSDictionary *parameters = @{@"status": update};
+    
+    [self POST:timeline parameters:parameters success:success failure:failure];
+}
+
 @end
