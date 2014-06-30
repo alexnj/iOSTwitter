@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftSlideViewMenuController">
             <connections>
-                <outlet property="tableView" destination="FDt-vn-P9E" id="a0a-0u-IvC"/>
+                <outlet property="tableView" destination="nfx-YE-aTt" id="OaW-nC-uc3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,26 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDt-vn-P9E">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="nfx-YE-aTt">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" red="0.53333333329999999" green="0.59999999999999998" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Mim-cg-iV3"/>
-                        <outlet property="delegate" destination="-1" id="Beb-pf-tRp"/>
-                    </connections>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="FDt-vn-P9E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5XH-cv-PN4"/>
-                <constraint firstItem="FDt-vn-P9E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U5X-Fe-CYV"/>
-                <constraint firstAttribute="trailing" secondItem="FDt-vn-P9E" secondAttribute="trailing" id="WDe-4f-9dq"/>
-                <constraint firstAttribute="bottom" secondItem="FDt-vn-P9E" secondAttribute="bottom" id="aIo-ul-9vT"/>
+                <constraint firstAttribute="bottom" secondItem="nfx-YE-aTt" secondAttribute="bottom" id="9Xp-dS-B7Z"/>
+                <constraint firstItem="nfx-YE-aTt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CFm-Qn-cR6"/>
+                <constraint firstAttribute="trailing" secondItem="nfx-YE-aTt" secondAttribute="trailing" id="JrJ-Yc-KwM"/>
+                <constraint firstItem="nfx-YE-aTt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZvH-8T-X0j"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

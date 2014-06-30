@@ -39,6 +39,9 @@
     // Point table view data source and delegates to this class itself.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.tableView setBackgroundColor:UIColorFromRGB(0x24272b)];
+    [self.tableView setSeparatorColor:UIColorFromRGB(0x393f45)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,8 +56,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.backgroundColor = tableView.backgroundColor;
+    [cell setBackgroundColor:UIColorFromRGB(0x212326)];
     cell.textLabel.text = self.menuHierarchy[indexPath.section][indexPath.row];
+    [cell.textLabel setTextColor:UIColorFromRGB(0x9ca4af)];
     
     return cell;
 }
@@ -65,6 +69,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.menuHierarchy.count;
+}
+
+// Custom color handlers.
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    
+    if ([view isKindOfClass: [UITableViewHeaderFooterView class]]) {
+        UITableViewHeaderFooterView* castView = (UITableViewHeaderFooterView*) view;
+        [castView.contentView setBackgroundColor:UIColorFromRGB(0x24272b)];
+        [castView.textLabel setTextColor:[UIColor whiteColor]];
+    }
 }
 
 @end

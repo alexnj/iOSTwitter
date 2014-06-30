@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "macros.h"
 
 @interface LeftSlideViewMenuController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
