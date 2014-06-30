@@ -64,7 +64,7 @@
     [nvc.view addGestureRecognizer:self.slidingViewController.panGesture];
     
     // configure anchored layout
-    self.slidingViewController.anchorRightPeekAmount  = 50.0;
+    self.slidingViewController.anchorRightPeekAmount  = 70.0;
     
     self.window.rootViewController = self.slidingViewController;
 }
