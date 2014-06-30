@@ -10,7 +10,7 @@
 
 @interface TweetListViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tweetListTableView;
-@property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) TweetTableViewCell* prototypeCell;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
@@ -24,6 +24,13 @@
         [self updateTimeline];
     }
     return self;
+}
+
+// Support adding a single tweet to timeline without a full
+// refresh of the feed. (Tweet*)tweet
+- (void)addTweetToTimeline:(Tweet*)tweet {
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tweetListTableView reloadData];
 }
 
 - (void)updateTimeline {
@@ -94,6 +101,7 @@
 
 - (void)onComposeClick {
     ComposeViewController *svc = [[ComposeViewController alloc] init];
+    [svc setTweetUpdateCallback:self selector:@selector(addTweetToTimeline:)];
     [self.navigationController pushViewController:svc animated:YES];
 }
 

@@ -9,7 +9,9 @@
 #import "ComposeViewController.h"
 
 @interface ComposeViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *text;
+@property (strong, nonatomic) IBOutlet UITextView *text;
+@property (strong, nonatomic) UIViewController *tweetCallbackViewController;
+@property (assign, nonatomic) SEL tweetCallbackViewMethod;
 @end
 
 @implementation ComposeViewController
@@ -59,6 +61,18 @@
 - (void)onTweetClick {
     [[TwitterClient sharedInstance] tweet:self.text.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
+        if (self.tweetCallbackViewController != nil && self.tweetCallbackViewMethod != nil) {
+            
+            // Convert JSON response to Tweet Mantle Model.
+            NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Tweet.class];
+            Tweet *newTweet = [transformer transformedValue:responseObject];
+
+            // Pass it back to call back to have it locally processed.
+            [self.tweetCallbackViewController performSelector:self.tweetCallbackViewMethod withObject:newTweet];
+            
+            // Close and go back to previous view.
+            [self onBackClick];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure: %@", error);
     }];
@@ -72,6 +86,14 @@
     
     button.frame = CGRectMake(0.0, 0.0, 48.0, 28.0);
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:button]];
+}
+
+
+#pragma mark Local tweet update callback support.
+
+- (void)setTweetUpdateCallback:(UIViewController*)vc selector:(SEL)selector {
+    self.tweetCallbackViewController = vc;
+    self.tweetCallbackViewMethod = selector;
 }
 
 @end

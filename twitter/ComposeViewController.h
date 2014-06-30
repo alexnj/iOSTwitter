@@ -11,5 +11,5 @@
 #import "TwitterClient.h"
 
 @interface ComposeViewController : UIViewController
-
+- (void)setTweetUpdateCallback:(UIViewController*)vc selector:(SEL)selector;
 @end
