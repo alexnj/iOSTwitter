@@ -68,7 +68,10 @@
             Tweet *newTweet = [transformer transformedValue:responseObject];
 
             // Pass it back to call back to have it locally processed.
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self.tweetCallbackViewController performSelector:self.tweetCallbackViewMethod withObject:newTweet];
+            #pragma clang diagnostic pop
             
             // Close and go back to previous view.
             [self onBackClick];
