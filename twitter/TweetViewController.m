@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UILabel *retweetCount;
 @property (strong, nonatomic) IBOutlet UILabel *favoriteCount;
+- (IBAction)onRetweetClicked:(id)sender;
 @end
 
 @implementation TweetViewController
@@ -80,5 +81,12 @@
     });
 }
 
+
+- (IBAction)onRetweetClicked:(id)sender {
+    [self.tweet retweet:^(Tweet *tweet) {
+        self.tweet = tweet;
+        [self displayTweet];
+    } failure:^{}];
+}
 
 @end

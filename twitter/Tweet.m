@@ -28,6 +28,7 @@
 // Map model to JSON fields.
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
+             @"id":@"id",
              @"text": @"text",
              @"url": @"url",
              @"createdAt": @"created_at",
@@ -91,5 +92,21 @@
     return [NSString stringWithFormat:@"%d%@", num, unit];
 }
 
+- (void)retweet:(void (^)(Tweet*))successBlock failure:(void (^)(void))failureBlock {
+    [[TwitterClient sharedInstance] retweet:self.id success:^(AFHTTPRequestOperation *operation, NSDictionary* jsonTweet) {
+        NSLog(@"Retweet Successful %@", jsonTweet);
+
+        // Convert JSON response to Tweet Mantel Models.
+        NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Tweet.class];
+        Tweet *c = [transformer transformedValue:jsonTweet];
+        
+        successBlock(c);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure: %@", error);
+        
+        failureBlock();
+    }];
+}
 
 @end

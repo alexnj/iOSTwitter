@@ -108,4 +108,13 @@
     [self POST:timeline parameters:parameters success:success failure:failure];
 }
 
+- (void)retweet:(NSString*)tweetId success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    NSString *timeline = [NSString stringWithFormat:@"statuses/retweet/%@.json", tweetId];
+    
+    NSLog(@"retweet URL %@", timeline);
+    
+    [self POST:timeline parameters:nil success:success failure:failure];
+}
+
 @end

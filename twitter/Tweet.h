@@ -7,9 +7,11 @@
 //
 
 #import "Mantle.h"
+#import "TwitterClient.h"
 
 @interface Tweet : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic) NSString  *id;
 @property (nonatomic) NSString  *text;
 @property (nonatomic) NSURL     *url;
 @property (nonatomic) NSDate    *createdAt;
@@ -20,5 +22,7 @@
 @property (nonatomic) NSNumber  *favoriteCount;
 
 - (NSString *)createdAtAsElapsed;
+
+- (void)retweet:(void (^)(Tweet*))successBlock failure:(void (^)(void))failureBlock;
 
 @end
