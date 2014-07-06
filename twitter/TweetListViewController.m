@@ -97,6 +97,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark View tweet
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Tweet* tweet = self.tweets[indexPath.row];
+    
+    [self onTweetClick:tweet];
+}
+
+
+- (void)onTweetClick:(Tweet*)tweet {
+    TweetViewController *tv = [[TweetViewController alloc] init];
+    [tv setTweet:tweet];
+    [self.navigationController pushViewController:tv animated:YES];
+}
+
 #pragma mark Compose button
 
 - (void)onComposeClick {

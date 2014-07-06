@@ -33,6 +33,8 @@
 		38A134F31960CB9600C54A5B /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A134F11960CB9600C54A5B /* ComposeViewController.m */; };
 		38A134F41960CB9600C54A5B /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38A134F21960CB9600C54A5B /* ComposeViewController.xib */; };
 		38A134F61960CED900C54A5B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A134F51960CED900C54A5B /* back.png */; };
+		38B4A2421969E90B008B4CB3 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B4A2401969E90B008B4CB3 /* TweetViewController.m */; };
+		38B4A2431969E90B008B4CB3 /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B4A2411969E90B008B4CB3 /* TweetViewController.xib */; };
 		38F0DF161960D915003F5C66 /* LeftSlideViewMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */; };
 		38F0DF171960D915003F5C66 /* LeftSlideViewMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */; };
 		A7C08470395848C0820B0403 /* libPods-twitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2781140A25249008EA21712 /* libPods-twitter.a */; };
@@ -87,6 +89,9 @@
 		38A134F11960CB9600C54A5B /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewController.m; path = twitter/ComposeViewController.m; sourceTree = "<group>"; };
 		38A134F21960CB9600C54A5B /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ComposeViewController.xib; path = twitter/ComposeViewController.xib; sourceTree = "<group>"; };
 		38A134F51960CED900C54A5B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		38B4A23F1969E90B008B4CB3 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetViewController.h; path = twitter/TweetViewController.h; sourceTree = "<group>"; };
+		38B4A2401969E90B008B4CB3 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetViewController.m; path = twitter/TweetViewController.m; sourceTree = "<group>"; };
+		38B4A2411969E90B008B4CB3 /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TweetViewController.xib; path = twitter/TweetViewController.xib; sourceTree = "<group>"; };
 		38F0DF131960D915003F5C66 /* LeftSlideViewMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewMenuController.h; path = twitter/LeftSlideViewMenuController.h; sourceTree = "<group>"; };
 		38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewMenuController.m; path = twitter/LeftSlideViewMenuController.m; sourceTree = "<group>"; };
 		38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftSlideViewMenuController.xib; path = twitter/LeftSlideViewMenuController.xib; sourceTree = "<group>"; };
@@ -214,6 +219,9 @@
 				38F0DF131960D915003F5C66 /* LeftSlideViewMenuController.h */,
 				38F0DF141960D915003F5C66 /* LeftSlideViewMenuController.m */,
 				38F0DF151960D915003F5C66 /* LeftSlideViewMenuController.xib */,
+				38B4A23F1969E90B008B4CB3 /* TweetViewController.h */,
+				38B4A2401969E90B008B4CB3 /* TweetViewController.m */,
+				38B4A2411969E90B008B4CB3 /* TweetViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 				38A134EF1960CACD00C54A5B /* hamburger.png in Resources */,
 				38A134F61960CED900C54A5B /* back.png in Resources */,
 				382F606219600F9A001E7EB8 /* TweetTableViewCell.xib in Resources */,
+				38B4A2431969E90B008B4CB3 /* TweetViewController.xib in Resources */,
 				386A5376195FC4840045B31E /* TweetListViewController.xib in Resources */,
 				3827BAAE195FB0BE00B19DC1 /* InfoPlist.strings in Resources */,
 				3827BAB6195FB0BE00B19DC1 /* Images.xcassets in Resources */,
@@ -391,6 +400,7 @@
 				386A5379195FCC160045B31E /* TwitterApiSecrets.m in Sources */,
 				38A134F31960CB9600C54A5B /* ComposeViewController.m in Sources */,
 				38F0DF161960D915003F5C66 /* LeftSlideViewMenuController.m in Sources */,
+				38B4A2421969E90B008B4CB3 /* TweetViewController.m in Sources */,
 				382F606119600F9A001E7EB8 /* TweetTableViewCell.m in Sources */,
 				3845A14B195FFF8000BB3553 /* Tweet.m in Sources */,
 				3827BAB0195FB0BE00B19DC1 /* main.m in Sources */,
