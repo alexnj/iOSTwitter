@@ -1,7 +1,7 @@
 iOSTwitter
 ==========
 
-Time spent on this exercise is about 15 hours.
+Time spent on this exercise is about 20 hours.
 
 ## User stories
 
@@ -14,15 +14,13 @@ Time spent on this exercise is about 15 hours.
 * [x] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 * [ ] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
 * [x] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
-* [ ] Optional: Retweeting and favoriting should increment the retweet and favorite count.
+* [x] Optional: Retweeting and favoriting should increment the retweet and favorite count.
 * [ ] Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
 * [ ] Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 * [ ] Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
-<!--
 ## Demo
 ![demo](screencast.gif) 
--->
 
 ## Pods imported
 * AFNetworking
