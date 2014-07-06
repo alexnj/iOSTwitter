@@ -16,6 +16,8 @@
 @property (nonatomic) NSString  *userName;
 @property (nonatomic) NSString  *userScreenName;
 @property (nonatomic) NSString  *userProfileImageUrl;
+@property (nonatomic) NSNumber  *retweetCount;
+@property (nonatomic) NSNumber  *favoriteCount;
 
 - (NSString *)createdAtAsElapsed;
 

@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *text;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UILabel *retweetCount;
+@property (strong, nonatomic) IBOutlet UILabel *favoriteCount;
 @end
 
 @implementation TweetViewController
@@ -46,7 +48,8 @@
     self.userName.text = tweet.userName;
     self.userScreenName.text = [@"@" stringByAppendingString:tweet.userScreenName];
     self.text.text = tweet.text;
-    
+    self.retweetCount.text = [tweet.retweetCount stringValue];
+    self.favoriteCount.text = tweet.favoriteCount == 0 ? @"0" : [tweet.favoriteCount stringValue];
     
     // <strong>Output ->  Date: 10/29/2008 08:29PM</strong>
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

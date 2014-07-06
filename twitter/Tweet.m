@@ -33,7 +33,9 @@
              @"createdAt": @"created_at",
              @"userName": @"user.name",
              @"userScreenName": @"user.screen_name",
-             @"userProfileImageUrl": @"user.profile_image_url"
+             @"userProfileImageUrl": @"user.profile_image_url",
+             @"retweetCount" : @"retweet_count",
+             @"favoriteCount" : @"favourites_count"
              };
 }
 
