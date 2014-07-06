@@ -9,7 +9,11 @@
 #import "TweetViewController.h"
 
 @interface TweetViewController ()
-
+@property (strong, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (strong, nonatomic) IBOutlet UILabel *userScreenName;
+@property (strong, nonatomic) IBOutlet UILabel *text;
+@property (strong, nonatomic) IBOutlet UILabel *time;
+@property (strong, nonatomic) IBOutlet UILabel *userName;
 @end
 
 @implementation TweetViewController
@@ -26,7 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    [self displayTweet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,8 +40,42 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setTweet:(Tweet*)tweet {
-    NSLog(@"Tweet set %@", tweet);
+- (void)displayTweet {
+    Tweet* tweet = self.tweet;
+    
+    self.userName.text = tweet.userName;
+    self.userScreenName.text = [@"@" stringByAppendingString:tweet.userScreenName];
+    self.text.text = tweet.text;
+    
+    
+    // <strong>Output ->  Date: 10/29/2008 08:29PM</strong>
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
+    NSString *dateString = [dateFormat stringFromDate:tweet.createdAt];
+    
+    self.time.text = dateString;
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.userProfileImageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        UIImage *image = [UIImage imageWithData:data];
+        [self setImageOnMainThread:self.userProfileImage image:image];
+    }];
 }
+
+- (void)setImageOnMainThread: (UIImageView *)imageView image:(UIImage *)image {
+    if (!image)
+        return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CATransition *transition = [CATransition animation];
+        transition.type = kCATransitionFade;
+        transition.duration = 0.5;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [imageView.layer addAnimation:transition forKey:nil];
+        
+        imageView.image = image;
+    });
+}
+
 
 @end

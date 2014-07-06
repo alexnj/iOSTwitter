@@ -108,7 +108,7 @@
 
 - (void)onTweetClick:(Tweet*)tweet {
     TweetViewController *tv = [[TweetViewController alloc] init];
-    [tv setTweet:tweet];
+    tv.tweet = tweet;
     [self.navigationController pushViewController:tv animated:YES];
 }
 

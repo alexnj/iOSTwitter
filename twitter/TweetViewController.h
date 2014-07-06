@@ -10,5 +10,5 @@
 #import "Tweet.h"
 
 @interface TweetViewController : UIViewController
-- (void)setTweet:(Tweet*)tweet;
+@property (nonatomic, strong) Tweet* tweet;
 @end
