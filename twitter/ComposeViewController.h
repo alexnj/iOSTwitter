@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
-#import "TwitterClient.h"
 
 @interface ComposeViewController : UIViewController
 - (void)setTweetUpdateCallback:(UIViewController*)vc selector:(SEL)selector;
