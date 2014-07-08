@@ -92,7 +92,26 @@
     return [NSString stringWithFormat:@"%d%@", num, unit];
 }
 
-- (void)retweet:(void (^)(Tweet*))successBlock failure:(void (^)(void))failureBlock {
+/* Network based operations supported by the model */
+
++ (void)tweet:(NSString*)message success:(void (^)(Tweet* tweet))successBlock failure:(void (^)(void))failureBlock {
+    [[TwitterClient sharedInstance] tweet:message success:^(AFHTTPRequestOperation *operation, NSDictionary* jsonTweet) {
+        NSLog(@"Tweet Successful %@", jsonTweet);
+        
+        // Convert JSON response to Tweet Mantel Models.
+        NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Tweet.class];
+        Tweet *c = [transformer transformedValue:jsonTweet];
+        
+        successBlock(c);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Tweet failure: %@", error);
+        
+        failureBlock();
+    }];
+}
+
+- (void)retweet:(void (^)(Tweet* tweet))successBlock failure:(void (^)(void))failureBlock {
     [[TwitterClient sharedInstance] retweet:self.id success:^(AFHTTPRequestOperation *operation, NSDictionary* jsonTweet) {
         NSLog(@"Retweet Successful %@", jsonTweet);
 
@@ -103,7 +122,7 @@
         successBlock(c);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure: %@", error);
+        NSLog(@"Retweet failure: %@", error);
         
         failureBlock();
     }];

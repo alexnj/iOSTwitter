@@ -59,23 +59,17 @@
 }
 
 - (void)onTweetClick {
-    [[TwitterClient sharedInstance] tweet:self.text.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.tweetCallbackViewController != nil && self.tweetCallbackViewMethod != nil) {
-            
-            // Convert JSON response to Tweet Mantle Model.
-            NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:Tweet.class];
-            Tweet *newTweet = [transformer transformedValue:responseObject];
-
-            // Pass it back to call back to have it locally processed.
-            #pragma clang diagnostic push
-            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [self.tweetCallbackViewController performSelector:self.tweetCallbackViewMethod withObject:newTweet];
-            #pragma clang diagnostic pop
-            
-            // Close and go back to previous view.
-            [self onBackClick];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    [[Tweet class] tweet:self.text.text success:^(Tweet* tweet){
+        // Pass it back to call back to have it locally processed.
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self.tweetCallbackViewController performSelector:self.tweetCallbackViewMethod withObject:tweet];
+        #pragma clang diagnostic pop
+        
+        // Close and go back to previous view.
+        [self onBackClick];
+        
+    } failure:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [[[UIAlertView alloc] initWithTitle:@"Error"
                                         message:@"Could not post the update. Please try again later."
