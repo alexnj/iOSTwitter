@@ -94,6 +94,19 @@
 
 /* Network based operations supported by the model */
 
++ (void)timeline:(int)count success:(void (^)(NSArray* tweets))successBlock failure:(void (^)(void))failureBlock {
+    [[TwitterClient sharedInstance] getTimeline:count success:^(AFHTTPRequestOperation *operation, NSArray* jsonTweetsArray) {
+        // Convert JSON response to Tweet Mantel Model objects.
+        NSValueTransformer *transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Tweet.class];
+        NSArray* tweets = [transformer transformedValue:jsonTweetsArray];
+        
+        successBlock(tweets);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failureBlock();
+    }];
+}
+
 + (void)tweet:(NSString*)message success:(void (^)(Tweet* tweet))successBlock failure:(void (^)(void))failureBlock {
     [[TwitterClient sharedInstance] tweet:message success:^(AFHTTPRequestOperation *operation, NSDictionary* jsonTweet) {
         NSLog(@"Tweet Successful %@", jsonTweet);

@@ -23,6 +23,7 @@
 
 - (NSString *)createdAtAsElapsed;
 
++ (void)timeline:(int)count success:(void (^)(NSArray* tweets))successBlock failure:(void (^)(void))failureBlock;
 + (void)tweet:(NSString*)message success:(void (^)(Tweet* tweet))successBlock failure:(void (^)(void))failureBlock;
 - (void)retweet:(void (^)(Tweet* tweet))successBlock failure:(void (^)(void))failureBlock;
 

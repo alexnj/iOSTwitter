@@ -34,19 +34,15 @@
 }
 
 - (void)updateTimeline {
-    [[TwitterClient sharedInstance] getTimeline:20 success:^(AFHTTPRequestOperation *operation, NSArray* jsonTweetsArray) {
-        // Convert JSON response to Tweet Mantel Models.
-        NSValueTransformer *transformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Tweet.class];
-        self.tweets = [transformer transformedValue:jsonTweetsArray];
-        
+    [[Tweet class] timeline:20 success:^(NSArray *tweets) {
+        self.tweets = [tweets mutableCopy];
         // Refresh table view.
         // TODO: Ensure that tableView is ready by this time.
         [self.tweetListTableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure: %@", error);
+    } failure:^{
+        NSLog(@"Failure.");
     }];
-    
+
     // End pull-down-refresh rotation.
     [self.refreshControl endRefreshing];
 }
